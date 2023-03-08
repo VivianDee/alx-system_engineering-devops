@@ -3,3 +3,4 @@ This repository was created for the alx course 0x00.Shell basics. This course wi
 1-listit is a script that displays the contents list of your current directory
 2-bring_me_home changes the working directory to the users home directory
 3-listfiles displays current directory contents in a long format
+4-listmorefiles displays current directory contents, including hidden files (starting with .). Use the long format.
