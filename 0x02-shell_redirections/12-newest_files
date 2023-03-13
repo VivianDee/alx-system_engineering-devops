@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l ./ | sort -k 6br -k 7.1nbr -k 7.2nbr -k 8.1nbr -k 8.2nbr -k 8.4nbr -k 8.5nbr | cut -c 41-1000 | head
+ls -tp -1 |grep -v / | head
