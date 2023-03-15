@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e {a..z}{a..z}'\n' | grep '\S' | grep -v oo
+echo -e {a..z}{a..z}'\n' | perl -pe 's/^\s+//' |grep -v oo
