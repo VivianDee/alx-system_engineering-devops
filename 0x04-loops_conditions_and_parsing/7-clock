@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#This displays the time from the zeroth hour to the twelveth hour
+
+Hour=0
+Min=1
+while [[ $Hour -le 12 ]]; do
+    if [[ $Min -eq 1 ]]; then
+        echo "Hour: $Hour"
+    fi
+    if [[ $Hour -ne 12 ]]; then
+        echo "$Min"
+    fi
+    ((Min++))
+    if [[ $Min -eq 60 ]]; then
+        ((Hour++))
+    fi
+    if [[ $Min -eq 60 ]]; then
+            Min=0
+    fi
+done
