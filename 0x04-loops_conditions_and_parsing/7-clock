@@ -7,9 +7,7 @@ while [[ $Hour -le 12 ]]; do
     if [[ $Min -eq 1 ]]; then
         echo "Hour: $Hour"
     fi
-    if [[ $Hour -ne 12 ]]; then
-        echo "$Min"
-    fi
+    echo "$Min"
     ((Min++))
     if [[ $Min -eq 60 ]]; then
         ((Hour++))
