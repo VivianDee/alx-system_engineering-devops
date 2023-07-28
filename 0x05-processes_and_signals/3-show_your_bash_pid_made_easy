@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This displays a list of currently running processes
+ps axu | grep bash | awk '{print $2" bash"}'
