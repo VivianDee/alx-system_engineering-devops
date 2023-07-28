@@ -3,4 +3,6 @@
 # shellcheck disable=SC2009
 pid=0
 pid=$(ps -u | grep -n ./4-to_infinity_and_beyond | grep -n ./4-to_infinity_and_beyond | grep 1: | awk '{print $2}')
-kill -9 "$pid"
+if [[ $pid -ne 0 ]]; then
+    kill -9 "$pid"
+fi
