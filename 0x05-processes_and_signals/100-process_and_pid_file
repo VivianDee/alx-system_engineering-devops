@@ -1,0 +1,26 @@
+#!/bin/env bash
+# Bash script that performs the specified actions on signals
+
+terminate_script() {
+    rm /var/run/myscript.pid
+    exit
+}
+
+interrupt_signal() {
+    echo "Y U no love me?!"
+}
+
+terminate_signal() {
+    echo "I hate the kill command"
+}
+
+trap 'terminate_script' SIGQUIT SIGTERM
+trap 'interrupt_signal' SIGINT
+trap 'terminate_signal' SIGTERM
+
+echo $$ > /var/run/myscript.pid
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 1
+done
