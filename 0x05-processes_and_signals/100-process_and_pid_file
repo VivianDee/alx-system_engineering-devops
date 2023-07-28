@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Bash script that performs the specified actions on signals
 
 terminate_script() {
