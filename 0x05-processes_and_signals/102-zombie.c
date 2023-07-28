@@ -4,7 +4,8 @@
 #include <unistd.h>
 
 /**
-* infinite_while - Function that runs an infinite loop to keep the program running.
+* infinite_while - Function that runs an infinite loop to keep the
+*program running.
 *
 * Return: Always 0.
 */
