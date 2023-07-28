@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This 4-to_infinity_and_beyond process using ctrl+c
+# shellcheck disable=SC2009
+./7-highlander &
+pid=0
+pid=$(ps aux | grep -n 7-highlander | grep -n 7-highlander | grep 1: | awk '{print $2}')
+if [[ -n $pid ]]; then
+    kill  -9 "$pid"
+    echo "Terminated"
+fi
