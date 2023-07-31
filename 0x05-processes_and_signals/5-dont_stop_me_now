@@ -5,5 +5,4 @@ pid=0
 pid=$(ps aux | grep -n 4-to_infinity_and_beyond | grep -n 4-to_infinity_and_beyond | grep 1: | awk '{print $2}')
 if [[ -n $pid ]]; then
     kill "$pid"
-    echo "Terminated"
 fi
