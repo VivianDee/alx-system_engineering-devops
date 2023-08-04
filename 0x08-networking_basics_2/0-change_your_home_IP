@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # This configures an Ubuntu server with the specified requirements
 
-file='/etc/hosts'
-line=$(cat /etc/hosts | grep -n ""| grep localhost | grep -v ip6| cut -d : -f 1)
+line=$(grep -n "" /etc/hosts | grep localhost | grep -v ip6| cut -d : -f 1)
 
 cp /etc/hosts ~/hosts.new
 if [ -n "$line" ]; then
-    sed -i $line'd' ~/hosts.new
+    sed -i "${line}d" ~/hosts.new
 fi
 
 sed -i '2i 8.8.8.8   facebook.com'  ~/hosts.new
