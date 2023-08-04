@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 # This configures an Ubuntu server with the specified requirements
 
 file='/etc/hosts'
