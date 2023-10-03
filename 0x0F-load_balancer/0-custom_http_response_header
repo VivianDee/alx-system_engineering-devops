@@ -7,6 +7,6 @@ sudo sed -i 's/80 default_server;/80;/g' /etc/nginx/sites-available/default
 my_username=$(whoami)
 sudo chown -R "$my_username":"$my_username" /var/www/html
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-host=$(hostname | cut -d "-" -f 2-)
-sudo sed -i "51i add_header X-Served-By \"03-$host\";" /etc/nginx/sites-available/default
+host=$(hostname)
+sudo sed -i "51i add_header X-Served-By \"$host\";" /etc/nginx/sites-available/default
 sudo service nginx start
