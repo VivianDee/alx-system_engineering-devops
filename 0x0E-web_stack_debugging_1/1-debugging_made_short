@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script ensures Nginx installation can listen on port 80
+apt-get -y update
+apt-get -y install nginx curl
+service start nginx
