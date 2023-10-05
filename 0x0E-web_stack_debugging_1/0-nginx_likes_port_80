@@ -2,5 +2,5 @@
 # This script ensures Nginx installation can listen on port 80
 apt-get -y update
 apt-get -y install nginx curl
-sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service start nginx
