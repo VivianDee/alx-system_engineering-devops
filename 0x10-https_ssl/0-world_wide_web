@@ -1,0 +1,28 @@
+#!/bin/bash
+# Thsi script display information about subdomains.
+
+get_dns_info() {
+    local domain="$1"
+    local subdomain="$2"
+
+    if [ -z "$subdomain" ]; then
+        subdomains=("www" "lb-01" "web-01" "web-02")
+    else
+        subdomains=("$subdomain")
+    fi
+
+    for sub in "${subdomains[@]}"; do
+        ip=$(nslookup "$sub.$domain" | awk '/Address/ {ip=$2} END {print ip}')
+
+        if [ -n "$dns_info" ]; then
+            echo "The subdomain $sub is a A record and points to $ip"
+        fi
+    done
+}
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
+fi
+
+get_dns_info "$1" "$2"
