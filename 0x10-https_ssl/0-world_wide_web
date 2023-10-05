@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Thsi script display information about subdomains.
 
 get_dns_info() {
