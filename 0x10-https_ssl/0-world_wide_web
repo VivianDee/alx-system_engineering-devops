@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Thsi script display information about subdomains.
+# This script display information about subdomains.
 
 get_dns_info() {
     local domain="$1"
@@ -14,7 +14,7 @@ get_dns_info() {
     for sub in "${subdomains[@]}"; do
         ip=$(nslookup "$sub.$domain" | awk '/Address/ {ip=$2} END {print ip}')
 
-        if [ -n "$dns_info" ]; then
+        if [ -n "$ip" ]; then
             echo "The subdomain $sub is a A record and points to $ip"
         fi
     done
