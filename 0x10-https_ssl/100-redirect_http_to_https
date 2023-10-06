@@ -1,0 +1,50 @@
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+        log     global
+        mode    http
+        option  httplog
+        option  dontlognull
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
+        timeout http-request 10s
+        errorfile 400 /etc/haproxy/errors/400.http
+        errorfile 403 /etc/haproxy/errors/403.http
+        errorfile 408 /etc/haproxy/errors/408.http
+        errorfile 500 /etc/haproxy/errors/500.http
+        errorfile 502 /etc/haproxy/errors/502.http
+        errorfile 503 /etc/haproxy/errors/503.http
+        errorfile 504 /etc/haproxy/errors/504.http
+
+frontend myfrontend
+        bind 0.0.0.0:80
+        mode http
+        option forwardfor
+        reqadd X-Forwarded-Proto:\ http
+        default_backend www-backend
+        redirect scheme https code 301 if !{ ssl_fc }
+
+#backend myservers
+#        balance roundrobin
+#        server 344136-web-01 100.24.205.80:80
+#        server 344136-web-02 54.85.130.183:80
+
+frontend www-https
+        bind 0.0.0.0:443 ssl crt /etc/letsencrypt/live/www.davee.tech/airbnb.com.pem
+        reqadd X-Forwarded-Proto:\ https
+        default_backend www-backend
+
+backend www-backend
+        balance  roundrobin
+        redirect scheme https if !{ ssl_fc }
+        server 344136-web-01 100.24.205.80:80 check
+        server 344136-web-02 54.85.130.183:80 check
