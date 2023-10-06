@@ -2,7 +2,9 @@
 # This script Installs and sets up haproxy
 
 sudo apt-get -y update
-sudo apt-get -y install haproxy=2.0.\*
+sudo apt-get install -y haproxy
+echo 'ENABLED=1' >> sudo tee /etc/default/haproxy
+
 sudo sed -i "28i timeout http-request 10s" /etc/haproxy/haproxy.cfg
 echo "
 
@@ -12,7 +14,7 @@ frontend myfrontend
 
 backend myservers
 	balance roundrobin
-	server server1 100.26.168.110
-	server server2 34.207.222.84
+        server 344136-web-01 100.24.205.80
+        server 344136-web-02 54.85.130.183
 " | sudo tee -a /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
