@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This script ensures Nginx installation can listen on port 80
-sed -i '0,/^.*listen 8080/s//    listen 80/' /etc/nginx/sites-available/default
-service nginx restart
+sed -i 's|listen 8080 default_server;|listen 80;|' /etc/nginx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 kill "$(pgrep 'nginx' | head -1)"
