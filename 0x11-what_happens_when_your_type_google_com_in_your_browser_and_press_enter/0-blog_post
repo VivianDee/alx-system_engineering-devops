@@ -1,0 +1,32 @@
+Have you ever wondered what really happens when you type "https://www.google.com" into your browser and press Enter? Let's take a simple step-by-step journey through this process:
+
+Step 1: DNS Request 🌐
+The journey begins with a Domain Name System (DNS) request. Your browser needs to convert the human-readable domain name "www.google.com" into an IP address. So it sends a query to a DNS resolver, which translates the domain name into Google's server IP address. 
+
+Step 2: TCP/IP 🌐
+Next, your browser establishes a Transmission Control Protocol (TCP) connection to Google's server using the obtained IP address and sends a request. TCP is a transport layer protocol so it ensures the data sent to the server gets there safely and that the response from the server also gets to the browser safely.
+
+Step 3: Firewall 🛡️
+If the network has a firewall, the firewall inspects the request from your browser to Google's server, to make sure it's safe and within security rules.
+
+Sidenote:  HTTPS/SSL🌐🔐
+
+Google's website uses the HTTPS (HyperText Transfer Protocol Secure) protocol to ensure secure communication. So the data sent from your browser to Google's servers is encrypted.
+
+The browser also checks Google's SSL certificate to confirm the authenticity of the connection.
+
+Step 4: Load Balancer 🔄 🔄
+The request from the browser gets to the load balancer first. You see, because of how big Google is, it receives a lot of requests so it uses load balancers to evenly distribute traffic across multiple servers, ensuring the website runs smoothly and efficiently.
+
+Step 5: Web Server 🚀🔍
+ Finally, Google's web servers handle your request, serving static content, dynamic web pages and handling different tasks. A websever software like Apache or Nginx makes this possible.
+
+Extra information : Application Server 🚀💼
+
+So now that the websevers has handled the request and  the Google website is displayed on your browser, performing a task like a Google search or user account login is handled by the application servers. 
+
+Application servers manage the behind-the-scenes work. When you search for something, the application server queries the database to retrieve the relevant results.
+
+A databases basically stores data in way that it can easily be retrieved, manipulated and updated. 
+
+ What may have seemed like a simple action of typing a URL and hitting Enter is actually a series of steps working together🌐🚀 #WebDevelopment #InternetMagic#ALX
