@@ -2,6 +2,7 @@
 # This script creates a backup for my databases
 
 filename=$(date +%d-%m-%Y)
+name="$filename.tar.gz"
 
 mysqldump --all-databases -u root --password="$1" > backup.sql
-tar -czvf "$filename" backup.sql
+tar -czvf "$name" backup.sql
