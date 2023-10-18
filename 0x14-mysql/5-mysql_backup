@@ -4,4 +4,4 @@
 filename=$(date +%d-%m-%Y)
 
 mysqldump --all-databases -u root --password="$1" > backup.sql
-tar -czvf "$file_name" backup.sql
+tar -czvf "$filename" backup.sql
