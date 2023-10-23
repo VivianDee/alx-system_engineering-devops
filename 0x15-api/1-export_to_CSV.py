@@ -8,7 +8,7 @@ import requests
 import sys
 
 
-def fetch_data(e_id=None):
+def fetch_data(e_id):
     """Fetches the data from the url"""
     user_data = requests.get(
             "https://jsonplaceholder.typicode.com/users/{}".format(e_id))
@@ -32,7 +32,7 @@ def export_to_CSV(data, todo, e_id):
         for task in todo:
             task_completed_status = task.get("completed")
             task_title = task.get("title")
-            username = data.get("name")
+            username = data.get("username")
             writer.writerow(
                     [e_id, username, task_completed_status, task_title])
 

@@ -11,12 +11,11 @@ import sys
 def fetch_data(e_id=None):
     """Fetches the data from the url"""
     user_data = requests.get(
-            "https://jsonplaceholder.typicode.com/users/?id={}".format(
-                e_id), verify=False)
+            "https://jsonplaceholder.typicode.com/users/{}".format(e_id))
 
     user_todos = requests.get(
-            "https://jsonplaceholder.typicode.com/todos/?userId={}".format(
-                e_id), verify=False)
+            "https://jsonplaceholder.typicode.com/todos",
+            params={"userId": e_id})
 
     user_data = user_data.json()
     user_todos = user_todos.json()
