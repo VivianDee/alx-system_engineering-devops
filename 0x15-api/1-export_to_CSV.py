@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
     Export data in the CSV format
 """
@@ -9,14 +10,19 @@ import sys
 
 def fetch_data(e_id=None):
     """Fetches the data from the url"""
-    user_data = requests.get("https://jsonplaceholder.typicode.com/users/?id={}".format(e_id), verify=False)
+    user_data = requests.get(
+            "https://jsonplaceholder.typicode.com/users/?id={}".format(
+                e_id), verify=False)
 
-    user_todos = requests.get("https://jsonplaceholder.typicode.com/todos/?userId={}".format(e_id), verify=False)
+    user_todos = requests.get(
+            "https://jsonplaceholder.typicode.com/todos/?userId={}".format(
+                e_id), verify=False)
 
     user_data = user_data.json()
     user_todos = user_todos.json()
 
     return user_data, user_todos
+
 
 def export_to_CSV(data, todo, e_id):
     """Exports data in the CSV format"""
@@ -28,7 +34,9 @@ def export_to_CSV(data, todo, e_id):
         for task in todo:
             task_completed_status = task.get("completed")
             task_title = task.get("title")
-            writer.writerow([e_id, username, task_completed_status, task_title])
+            writer.writerow(
+                    [e_id, username, task_completed_status, task_title])
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
