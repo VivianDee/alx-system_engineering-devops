@@ -11,12 +11,11 @@ import sys
 def fetch_data(e_id=None):
     """Fetches the data from the url"""
     user_data = requests.get(
-            "https://jsonplaceholder.typicode.com/users/?id={}".format(
-                e_id), verify=False)
+            "https://jsonplaceholder.typicode.com/users/{}".format(e_id))
 
     user_todos = requests.get(
-            "https://jsonplaceholder.typicode.com/todos/?userId={}".format(
-                e_id), verify=False)
+            "https://jsonplaceholder.typicode.com/todos",
+            params={"userId": e_id})
 
     user_data = user_data.json()
     user_todos = user_todos.json()
@@ -26,9 +25,9 @@ def fetch_data(e_id=None):
 
 def export_to_CSV(data, todo, e_id):
     """Exports data in the CSV format"""
-    username = data[0].get("name")
+    username = data.get("name")
 
-    with open("{}.csv".format(e_id), 'w') as f:
+    with open("{}.csv".format(e_id), 'w', newline="") as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
 
         for task in todo:
