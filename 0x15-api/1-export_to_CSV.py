@@ -25,7 +25,6 @@ def fetch_data(e_id=None):
 
 def export_to_CSV(data, todo, e_id):
     """Exports data in the CSV format"""
-    username = data.get("name")
 
     with open("{}.csv".format(e_id), 'w', newline="") as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
@@ -33,6 +32,7 @@ def export_to_CSV(data, todo, e_id):
         for task in todo:
             task_completed_status = task.get("completed")
             task_title = task.get("title")
+            username = data.get("name")
             writer.writerow(
                     [e_id, username, task_completed_status, task_title])
 
