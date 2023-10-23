@@ -32,7 +32,7 @@ def display_progress(data, todo):
             completed_tasks += 1
         total_tasks += 1
 
-    print("Employee {} is done with tasks({}/{})".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         data.get("name"), completed_tasks, total_tasks))
     for task in todo:
         if task.get("completed"):
