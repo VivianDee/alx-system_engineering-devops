@@ -25,7 +25,7 @@ def fetch_data(e_id=None):
 
 def export_to_JSON(data, todo, e_id):
     """Exports data in the JSON format"""
-    username = data[0].get("name")
+    username = data.get("username")
     dictionary = {e_id: []}
 
     for task in todo:
