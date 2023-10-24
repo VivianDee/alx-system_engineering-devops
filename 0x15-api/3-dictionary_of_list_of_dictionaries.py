@@ -11,7 +11,7 @@ import sys
 def fetch_data(e_id=None):
     """Fetches the data from the url"""
     user_data = requests.get(
-            "https://jsonplaceholder.typicode.com/users/{}".format(e_id))
+            "https://jsonplaceholder.typicode.com/users/")
 
     user_todos = requests.get(
             "https://jsonplaceholder.typicode.com/todos",
@@ -26,25 +26,26 @@ def fetch_data(e_id=None):
 def export_to_JSON(data, todo):
     """Exports data in the JSON format"""
     dictionary = {}
-    count = -1
 
-    for task in todo:
-        e_id = task.get("userId")
+    for user in data:
+        e_id = user.get("id")
         if e_id not in dictionary.keys():
             dictionary[e_id] = []
-            count += 1
 
-        username = data[count].get("name")
-        task_completed_status = task.get("completed")
-        task_title = task.get("title")
+        username = user.get("username")
 
-        sub_dictionary = {
-                "task": task_title,
-                "completed": task_completed_status,
-                "username": username
-                }
+        for task in todo:
+            if task.get("userId") == e_id:
+                task_completed_status = task.get("completed")
+                task_title = task.get("title")
 
-        dictionary[e_id].append(sub_dictionary)
+                sub_dictionary = {
+                        "task": task_title,
+                        "completed": task_completed_status,
+                        "username": username
+                        }
+
+                dictionary[e_id].append(sub_dictionary)
 
     json_obj = json.dumps(dictionary)
 
