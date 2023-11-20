@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+# Reloads Gunicorn in a graceful way
+
+
+kill -HUP $(pgrep gunicorn)
