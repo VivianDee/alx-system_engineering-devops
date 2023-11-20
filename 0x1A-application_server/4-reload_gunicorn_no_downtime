@@ -2,4 +2,4 @@
 # Reloads Gunicorn in a graceful way
 
 
-kill -HUP $(pgrep gunicorn)
+kill -HUP "$(pgrep gunicorn)"
